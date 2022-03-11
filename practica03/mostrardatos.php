@@ -8,7 +8,8 @@ if(isset($_POST['Name'])&&
 	isset($_POST['apellidop']) &&
 	isset($_POST['apellidom']) &&
 	isset($_POST['email']) &&
-	isset($_POST['password']) 
+	isset($_POST['password']) && 
+	isset($_POST['Fnac'])
 	)
 	{
 		$name=$_POST['Name'];
@@ -16,6 +17,13 @@ if(isset($_POST['Name'])&&
 		$am=$_POST['apellidom'];
 		$mail=$_POST['email'];
 		$pass=$_POST['password'];
+		$Fnac=$_POST['Fnac'];
+		
+		$FnacForm=strtotime($Fnac);
+		$FnacForm2=date("Y",$FnacForm);
+		
+		$Fhoy=date("Y");
+		$edad=$Fhoy-$FnacForm2;
 echo  "
 <table border='1'>
 	<tr>
@@ -34,6 +42,7 @@ echo  "
 		$mail
 		</td>
 	</tr>
+	
 	<tr>
 		</td>
 		<td>
@@ -45,17 +54,16 @@ echo  "
 	</tr>	
 </table>	
 ";
+	if($edad>=18)
+		echo "Ya estas grande ($edad)";
 
 	}
 	
 	else
 	{
-		$var1=100.0;
-		$var2="100.0";
-		 if($var1 === $var2)
-			echo "son iguales"; 
+		 
 
-     echo"<meta http-equiv='refresh' content='10; url=index.html'>";
+     echo"<meta http-equiv='refresh' content='3; url=index.html'>";
 	
 	}
 ?>
